@@ -32,6 +32,7 @@ RUN apt-get purge -y software-properties-common && \
     apt-get autoclean -y
 
 # volume
+USER wine
 
 #USER wine
 CMD ["/bin/bash"]
