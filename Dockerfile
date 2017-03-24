@@ -7,7 +7,7 @@ RUN dpkg --add-architecture i386 && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:ubuntu-wine/ppa && \
     apt-get update -y && \
-    apt-get install -y wine1.7 xvfb wget psmisc &&\
+    apt-get install -y wine1.8 xvfb wget psmisc &&\
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd -u 1001 -d /home/wine -m -s /bin/bash wine
@@ -27,6 +27,12 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2010' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2013' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2015' && \
+    rm winetricks
+
+RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
+    chmod +x winetricks && \
+    su -p -l wine -c 'wineboot' && \
+    su -p -l wine -c 'xvfb-run -a ./winetricks -q dotnet462' && \
     rm winetricks
 
 # clean
