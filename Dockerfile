@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER ZCubeKr <zcube@zcube.kr>
 
 # wine install
@@ -14,6 +14,7 @@ RUN useradd -u 1001 -d /home/wine -m -s /bin/bash wine
 ENV HOME /home/wine
 ENV WINEPREFIX /home/wine/.wine
 ENV WINEDEBUG -all
+ENV WINEARCH win32
 
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
     chmod +x winetricks && \
