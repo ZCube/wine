@@ -32,7 +32,7 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
 RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
     chmod +x winetricks && \
     su -p -l wine -c 'wineboot' && \
-    su -p -l wine -c 'xvfb-run -a ./winetricks -q dotnet462' && \
+    su -p -l wine -c 'xvfb-run -a ./winetricks -q dotnet40' && \
     rm winetricks
 
 # clean
