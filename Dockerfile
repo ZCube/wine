@@ -23,7 +23,6 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
     su -p -l wine -c 'xvfb-run -a ./winetricks -q mfc40' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q mfc42' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q msvcirt' && \
-    su -p -l wine -c 'xvfb-run -a ./winetricks -q python26' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun6' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2010' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2013' && \
@@ -35,9 +34,15 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
     su -p -l wine -c 'wineboot' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q dotnet40' && \
     rm winetricks
-
+    
+# python 2.7
+RUN wget https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi &&\
+    chmod +x python-2.7.13.msi && \
+    su -p -l wine -c 'wine msiexec /i "python-2.7.13.amd64.msi" /passive /norestart ADDLOCAL=ALL' && \
+    su -p -l wine -c 'wine c:/Python27/lib/Scripts/pip.exe install tornado zmq redis' && \
+    rm python-2.7.13.msi
+    
 # clean
-
 RUN apt-get purge -y software-properties-common && \
     apt-get autoclean -y
 
