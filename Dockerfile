@@ -8,7 +8,7 @@ RUN dpkg --add-architecture i386 && \
     add-apt-repository -y ppa:ubuntu-wine/ppa && \
     apt-get update -y && \
     apt-get install -y wine1.8 xvfb wget psmisc nodejs-legacy nodejs npm python-pip &&\
-    pip install tornado zmq supervisor && \
+    pip install tornado zmq supervisor redis && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd -u 1001 -d /home/wine -m -s /bin/bash wine
