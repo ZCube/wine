@@ -43,6 +43,9 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
 # python 2.7
 RUN wget https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi &&\
     chmod +x python-2.7.13.msi && \
+    cp /home/wine/.wine/drive_c/Python27/Scripts/pip.exe /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe
+    su -p -l wine -c 'wine c:/Python27/Scripts/pip_.exe install --upgrade pip'
+    rm /home/wine/.wine/drive_c/Python27/Scripts/pip_.exe
     su -p -l wine -c 'wine msiexec /i "python-2.7.13.msi" /passive /norestart ADDLOCAL=ALL' && \
     su -p -l wine -c 'wine c:/Python27/Scripts/pip.exe install tornado zmq redis' && \
     rm python-2.7.13.msi
@@ -50,6 +53,9 @@ RUN wget https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi &&\
 # python 3.4
 RUN wget https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi &&\
     chmod +x python-3.4.3.msi && \
+    cp /home/wine/.wine/drive_c/Python34/Scripts/pip.exe /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe
+    su -p -l wine -c 'wine c:/Python34/Scripts/pip_.exe install --upgrade pip'
+    rm /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe
     su -p -l wine -c 'wine msiexec /i "python-3.4.3.msi" /passive /norestart ADDLOCAL=ALL' && \
     su -p -l wine -c 'wine c:/Python34/Scripts/pip.exe install tornado zmq redis' && \
     rm python-3.4.3.msi
