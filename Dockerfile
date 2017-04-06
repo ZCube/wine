@@ -7,12 +7,12 @@ RUN dpkg --add-architecture i386 && \
     apt-get install -y software-properties-common && \
     apt-get install -y python-software-properties && \
     add-apt-repository -y ppa:ubuntu-wine/ppa && \
-    add-apt-repository -y ppa:rwky/redis && \
     apt-get update -y && \
     apt-get install -y redis-server && \
     apt-get install -y wine1.8 xvfb wget psmisc nodejs-legacy nodejs npm python-pip &&\
     pip install tornado zmq supervisor redis && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get autoclean -y
 
 RUN useradd -u 1001 -d /home/wine -m -s /bin/bash wine
 ENV HOME /home/wine
