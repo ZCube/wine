@@ -72,5 +72,5 @@ RUN su -p -l wine -c 'wine c:/Python27/Scripts/pip.exe install $PYTHOHN_LIBRARIE
 
 # volume
 
-USER wine
+#USER wine
 CMD ["/bin/bash"]
