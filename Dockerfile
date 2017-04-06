@@ -9,8 +9,9 @@ RUN dpkg --add-architecture i386 && \
     add-apt-repository -y ppa:ubuntu-wine/ppa && \
     apt-get update -y && \
     apt-get install -y redis-server && \
-    apt-get install -y wine1.8 xvfb wget psmisc nodejs-legacy nodejs npm python-pip &&\
-    pip install tornado zmq supervisor redis && \
+    apt-get install -y wine1.8 xvfb wget psmisc nodejs-legacy nodejs npm python-pip python3-pip &&\
+    pip2 install tornado zmq supervisor redis && \
+    pip3 install tornado zmq supervisor redis && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get autoclean -y
 
@@ -44,6 +45,13 @@ RUN wget https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi &&\
     su -p -l wine -c 'wine msiexec /i "python-2.7.13.msi" /passive /norestart ADDLOCAL=ALL' && \
     su -p -l wine -c 'wine c:/Python27/Scripts/pip.exe install tornado zmq redis' && \
     rm python-2.7.13.msi
+    
+# python 3.4
+RUN wget https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi &&\
+    chmod +x python-3.4.3.msi && \
+    su -p -l wine -c 'wine msiexec /i "python-3.4.3.msi" /passive /norestart ADDLOCAL=ALL' && \
+    su -p -l wine -c 'wine c:/Python34/Scripts/pip.exe install tornado zmq redis' && \
+    rm python-3.4.3.msi
     
 # clean
 RUN apt-get purge -y software-properties-common && \
