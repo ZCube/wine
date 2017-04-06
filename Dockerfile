@@ -10,8 +10,9 @@ RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
     apt-get install -y redis-server && \
     apt-get install -y wine1.8 xvfb wget psmisc nodejs-legacy nodejs npm python-pip python3-pip &&\
-    pip2 install tornado zmq supervisor redis && \
-    pip3 install tornado zmq supervisor redis && \
+    pip2 install supervisor redis && \
+    pip2 install tornado zmq redis && \
+    pip3 install tornado zmq redis && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get autoclean -y
 
