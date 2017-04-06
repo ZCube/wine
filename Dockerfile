@@ -62,7 +62,8 @@ RUN wget https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi &&\
 RUN apt-get purge -y software-properties-common && \
     apt-get autoclean -y
 
-ENV PYTHOHN_LIBRARIES tornado zmq redis sqlalchemy jinja2 PyMySQL pika rethinkdb
+ENV PYTHOHN_LIBRARIES tornado zmq redis sqlalchemy jinja2 PyMySQL pika 
+# rethinkdb
 
 # python packages
 RUN su -p -l wine -c 'wine c:/Python27/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
