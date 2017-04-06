@@ -51,5 +51,5 @@ RUN apt-get purge -y software-properties-common && \
 
 # volume
 
-#USER wine
+USER wine
 CMD ["/bin/bash"]
