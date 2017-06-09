@@ -6,10 +6,10 @@ RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
     apt-get install -y software-properties-common && \
     apt-get install -y python-software-properties && \
-    add-apt-repository -y ppa:ubuntu-wine/ppa && \
+    add-apt-repository ppa:wine/wine-builds && \
     apt-get update -y && \
     apt-get install -y redis-server && \
-    apt-get install -y wine1.8 xvfb wget psmisc nodejs-legacy nodejs npm python-pip python3-pip &&\
+    apt-get install -y wine xvfb wget psmisc nodejs-legacy nodejs npm python-pip python3-pip &&\
     pip2 install supervisor && \
     pip2 install --upgrade pip && \
     pip3 install --upgrade pip && \
