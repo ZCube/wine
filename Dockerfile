@@ -9,6 +9,7 @@ RUN dpkg --add-architecture i386 && \
     add-apt-repository ppa:wine/wine-builds && \
     apt-get update -y && \
     apt-get install -y redis-server && \
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && \
     apt-get install -y wine xvfb wget psmisc nodejs-legacy nodejs npm python-pip python3-pip &&\
     pip2 install supervisor && \
     pip2 install --upgrade pip && \
