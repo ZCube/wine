@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+#FROM ubuntu:16.04
+FROM ibmjava:8-sdk
 MAINTAINER ZCubeKr <zcube@zcube.kr>
 
 # wine install
