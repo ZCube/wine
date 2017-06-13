@@ -31,6 +31,7 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
     su -p -l wine -c 'xvfb-run -a ./winetricks -q msvcirt' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun6' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2010' && \
+    su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2013' && \
     su -p -l wine -c 'xvfb-run -a ./winetricks -q vcrun2015' && \
     rm winetricks && \
     rm -rf /tmp/.wine*
