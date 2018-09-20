@@ -5,7 +5,7 @@ MAINTAINER ZCubeKr <zcube@zcube.kr>
 # wine install
 RUN dpkg --add-architecture i386 && \
     apt-get update -y && \
-    apt-get install -y software-properties-common python-software-properties wget apt-transport-https && \
+    apt-get install -y software-properties-common wget apt-transport-https && \
     wget https://dl.winehq.org/wine-builds/Release.key && \
     apt-key add Release.key && \
     apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/ && \
