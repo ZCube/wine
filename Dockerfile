@@ -8,9 +8,9 @@ RUN dpkg --add-architecture i386 && \
     apt-get install -y software-properties-common wget apt-transport-https && \
     wget https://dl.winehq.org/wine-builds/Release.key && \
     apt-key add Release.key && \
-    apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/ && \
+    apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ artful main' && \
     apt-get update -y && \
-    apt-get install -y cabextract redis-server winehq-stable xvfb wget psmisc nodejs-legacy nodejs npm python-pip python3-pip openssh-server aptitude net-tools curl vim git sed &&\
+    apt-get install -y cabextract redis-server winehq-stable xvfb wget psmisc python-pip python3-pip aptitude net-tools curl vim git sed &&\
     pip2 install supervisor && \
     pip2 install --upgrade pip && \
     pip3 install --upgrade pip && \
