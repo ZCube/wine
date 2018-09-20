@@ -1,5 +1,5 @@
-#FROM ubuntu:16.04
-FROM ibmjava:8-sdk
+FROM ubuntu:18.04
+#FROM ibmjava:8-sdk
 MAINTAINER ZCubeKr <zcube@zcube.kr>
 
 # wine install
@@ -46,25 +46,25 @@ RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/wine
     
     
 # python 2.7
-RUN wget https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi &&\
-    chmod +x python-2.7.13.msi && \
+RUN wget https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi &&\
+    chmod +x python-2.7.15.msi && \
     rm -rf /tmp/.wine* && \
-    su -p -l wine -c 'wine msiexec /i "python-2.7.13.msi" /passive /norestart ADDLOCAL=ALL' && \
+    su -p -l wine -c 'wine msiexec /i "python-2.7.15.msi" /passive /norestart ADDLOCAL=ALL' && \
     cp /home/wine/.wine/drive_c/Python27/Scripts/pip.exe /home/wine/.wine/drive_c/Python27/Scripts/pip_.exe && \
     su -p -l wine -c 'wine c:/Python27/Scripts/pip_.exe install --upgrade pip' && \
     rm /home/wine/.wine/drive_c/Python27/Scripts/pip_.exe && \
-    rm python-2.7.13.msi && \
+    rm python-2.7.15.msi && \
     rm -rf /tmp/.wine*
     
-# python 3.4
-RUN wget https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi &&\
-    chmod +x python-3.4.3.msi && \
+# python 3.6
+RUN wget https://www.python.org/ftp/python/3.6.6/python-3.6.6.msi &&\
+    chmod +x python-3.6.6.msi && \
     rm -rf /tmp/.wine* && \
-    su -p -l wine -c 'wine msiexec /i "python-3.4.3.msi" /passive /norestart ADDLOCAL=ALL' && \
-    cp /home/wine/.wine/drive_c/Python34/Scripts/pip.exe /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe && \
-    su -p -l wine -c 'wine c:/Python34/Scripts/pip_.exe install --upgrade pip' && \
-    rm /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe && \
-    rm python-3.4.3.msi && \
+    su -p -l wine -c 'wine msiexec /i "python-3.6.6.msi" /passive /norestart ADDLOCAL=ALL' && \
+    cp /home/wine/.wine/drive_c/Python36/Scripts/pip.exe /home/wine/.wine/drive_c/Python36/Scripts/pip_.exe && \
+    su -p -l wine -c 'wine c:/Python36/Scripts/pip_.exe install --upgrade pip' && \
+    rm /home/wine/.wine/drive_c/Python36/Scripts/pip_.exe && \
+    rm python-3.6.6.msi && \
     rm -rf /tmp/.wine*
     
 # clean
@@ -77,7 +77,7 @@ ENV PYTHOHN_LIBRARIES tornado zmq redis sqlalchemy jinja2 PyMySQL pika
 # python packages
 RUN rm -rf /tmp/.wine* && \
     su -p -l wine -c 'wine c:/Python27/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
-    su -p -l wine -c 'wine c:/Python34/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
+    su -p -l wine -c 'wine c:/Python36/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
     pip2 install $PYTHOHN_LIBRARIES && \
     pip3 install $PYTHOHN_LIBRARIES && \
     rm -rf /tmp/.wine*
