@@ -56,15 +56,15 @@ RUN wget https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi &&\
     rm python-2.7.15.msi && \
     rm -rf /tmp/.wine*
     
-# python 3.6
-RUN wget https://www.python.org/ftp/python/3.6.6/python-3.6.6.msi &&\
-    chmod +x python-3.6.6.msi && \
+# python 3.4
+RUN wget https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi &&\
+    chmod +x python-3.4.3.msi && \
     rm -rf /tmp/.wine* && \
-    su -p -l wine -c 'wine msiexec /i "python-3.6.6.msi" /passive /norestart ADDLOCAL=ALL' && \
-    cp /home/wine/.wine/drive_c/Python36/Scripts/pip.exe /home/wine/.wine/drive_c/Python36/Scripts/pip_.exe && \
-    su -p -l wine -c 'wine c:/Python36/Scripts/pip_.exe install --upgrade pip' && \
-    rm /home/wine/.wine/drive_c/Python36/Scripts/pip_.exe && \
-    rm python-3.6.6.msi && \
+    su -p -l wine -c 'wine msiexec /i "python-3.4.3.msi" /passive /norestart ADDLOCAL=ALL' && \
+    cp /home/wine/.wine/drive_c/Python34/Scripts/pip.exe /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe && \
+    su -p -l wine -c 'wine c:/Python34/Scripts/pip_.exe install --upgrade pip' && \
+    rm /home/wine/.wine/drive_c/Python34/Scripts/pip_.exe && \
+    rm python-3.4.3.msi && \
     rm -rf /tmp/.wine*
     
 # clean
