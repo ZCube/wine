@@ -76,7 +76,7 @@ ENV PYTHOHN_LIBRARIES tornado zmq redis sqlalchemy jinja2 PyMySQL pika grpcio-to
 # python packages
 RUN rm -rf /tmp/.wine* && \
     su -p -l wine -c 'wine c:/Python27/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
-    su -p -l wine -c 'wine c:/Python36/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
+    su -p -l wine -c 'wine c:/Python34/Scripts/pip.exe install $PYTHOHN_LIBRARIES' && \
     pip2 install $PYTHOHN_LIBRARIES && \
     pip3 install $PYTHOHN_LIBRARIES && \
     rm -rf /tmp/.wine*
