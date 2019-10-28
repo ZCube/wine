@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:buster-slim
 #FROM ibmjava:8-sdk
 MAINTAINER ZCubeKr <zcube@zcube.kr>
 
