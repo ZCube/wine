@@ -1,4 +1,4 @@
-FROM ubuntu:bullseye-slim
+FROM debian:bullseye-slim
 #FROM ibmjava:8-sdk
 MAINTAINER ZCubeKr <zcube@zcube.kr>
 
